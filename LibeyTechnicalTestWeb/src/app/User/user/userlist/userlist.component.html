@@ -1,0 +1,38 @@
+<form #userForm="ngForm" style="padding-right: 5%; padding-left: 5%; ">
+	<div class="card" style="width: 100%;margin-top: 2rem;background-color:#edf2f6;border-radius: 10px; height: 70em; " >
+		<div class="card-header"><b>Listado de usuario</b></div>
+        <div class="card-body">
+            <div class="d-flex justify-content-end mb-1">
+                <a href="/user/maintenance" class="btn btn-primary">Agregar</a>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>TipoDoc</th>
+                        <th>NumeroDoc</th>
+                        <th>Apellidos y Nombres</th>
+                        <th>Direccion</th>
+                        <th>Email</th>
+                        <th>Activo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users$ | async">
+                        <td>{{ user.documentTypeId  }}</td>
+                        <td>{{ user.documentNumber }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.address }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.active }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm " (click)="editarUsuario(user)">Editar</button>
+                            <button class="btn btn-danger btn-sm pl-3" (click)="eliminarUsuario(user)">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+	</div>	
+</form>
+
